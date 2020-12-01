@@ -9,19 +9,20 @@ import (
 	"github.com/ablqk/adventofcode/output"
 )
 
-const inputFile = "2020/dec01/input.txt"
 const expectedTotal = 2020
 
-func New() output.Outputter {
-	return dec01{}
+func New(inputFile string) output.Outputter {
+	return dec01{inputFile}
 }
 
 // dec01 is the implementation of this day's exercise
-type dec01 struct {}
+type dec01 struct {
+	inputPath string
+}
 
-func (dec01) Output() (string, error) {
+func (d dec01) Output() (string, error) {
 	// read the input file
-	lines, err := readLines(inputFile)
+	lines, err := readLines(d.inputPath)
 	if err != nil {
 		return "", err
 	}

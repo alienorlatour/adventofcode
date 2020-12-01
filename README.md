@@ -1,3 +1,5 @@
+![](https://github.com/ablqk/adventofcode/workflows/validation/badge.svg)
+
 # Advent of Code
 
 This is my take on the [2020 Advent of Code](https://adventofcode.com/2020) using the GO language.

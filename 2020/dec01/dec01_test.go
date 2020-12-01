@@ -34,3 +34,20 @@ func Test_FindMatch2(t *testing.T) {
 		})
 	}
 }
+
+func Test_Output(t *testing.T) {
+	// nominal
+	s, err := dec01{"input.txt"}.Output()
+	assert.NoError(t, err)
+	assert.Contains(t, s, "1020036")
+
+	// no such file
+	_, err = dec01{"noSuchFile"}.Output()
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "no such file")
+
+	// no match
+	s, err = dec01{"invalidtest.txt"}.Output()
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "no match found")
+}
