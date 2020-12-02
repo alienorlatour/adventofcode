@@ -1,17 +1,17 @@
 package dec01
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strconv"
 
-	"github.com/ablqk/adventofcode/output"
+	"github.com/ablqk/adventofcode/2020/fileread"
+	"github.com/ablqk/adventofcode/doors"
 )
 
 const expectedTotal = 2020
 
-func New(inputFile string) output.Outputter {
+// New instance of the door for December 1st
+// 1081 – Birth of Louis VI, French king
+func New(inputFile string) doors.Solver {
 	return dec01{inputFile}
 }
 
@@ -20,9 +20,9 @@ type dec01 struct {
 	inputPath string
 }
 
-func (d dec01) Output() (string, error) {
+func (d dec01) Solve() (string, error) {
 	// read the input file
-	lines, err := readLines(d.inputPath)
+	lines, err := fileread.ReadInts(d.inputPath)
 	if err != nil {
 		return "", err
 	}
@@ -45,24 +45,3 @@ func findMatch2(lines []int) (int, int, error) {
 	return 0, 0, fmt.Errorf("no match found")
 }
 
-// readLines reads a whole file into memory and returns a slice of its lines as ints
-func readLines(path string) ([]int, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-
-	var lines []int
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		text := scanner.Text()
-		// cat as int
-		i, err := strconv.Atoi(text)
-		if err != nil {
-			return nil, err
-		}
-		lines = append(lines, i)
-	}
-	return lines, scanner.Err()
-}

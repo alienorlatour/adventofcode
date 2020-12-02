@@ -2,7 +2,7 @@ init:
 	go mod vendor
 
 test:
-	go test ./...
+	go test ./... -cover
 
 build:
 	go build -o adventofcode.out cmd/main.go
