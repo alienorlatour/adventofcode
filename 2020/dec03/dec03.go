@@ -44,7 +44,7 @@ func (d dec03) Solve() (string, error) {
 
 	result := 1 // will be multiplied by all the tree counts
 	for _, sl := range d.slopes {
-		// for each slope, multiply the number of trees by the previous result
+		// for each slope, multiply the number of plan by the previous result
 		result *= f.countSlope(sl)
 	}
 
@@ -64,6 +64,6 @@ func loadForest(path string) (forest, error) {
 		return forest{}, fmt.Errorf("no tree in the forest")
 	}
 	return forest{
-		carto: f,
+		plan: f,
 	}, nil
 }

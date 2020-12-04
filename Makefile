@@ -1,3 +1,12 @@
+
+# If the first argument is "run"...
+ifeq (run,$(firstword $(MAKECMDGOALS)))
+  # use the rest as arguments for "run"
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  # and turn them into do-nothing targets
+  $(eval $(RUN_ARGS):;@:)
+endif
+
 init:
 	go mod vendor
 
@@ -9,6 +18,6 @@ build:
 
 run: build
 run:
-	[ -n "$(filter-out $@,$(MAKECMDGOALS))" ] || exit 1
-	@echo "Running Advent of Code for December $(filter-out $@,$(MAKECMDGOALS))"
-	./adventofcode.out -day $(filter-out $@,$(MAKECMDGOALS))
+	[ -n "$(RUN_ARGS)" ] || exit 1
+	@echo "Running Advent of Code for December $(RUN_ARGS)"
+	./adventofcode.out -day $(RUN_ARGS)
