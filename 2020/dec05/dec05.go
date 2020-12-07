@@ -1,6 +1,10 @@
 package dec05
 
 import (
+	"fmt"
+	"strings"
+
+	"github.com/ablqk/adventofcode/2020/fileread"
 	"github.com/ablqk/adventofcode/doors"
 )
 
@@ -13,5 +17,20 @@ type dec05 struct {
 }
 
 func (d dec05) Solve() (string, error) {
-	return "", nil
+	var highest BoardingPass
+	err := fileread.ReadAndApply(d.input, func(s string) error {
+		bp, err := NewBoardingPass(strings.Trim(s, " \t"))
+		if err != nil {
+			return err
+		}
+		if bp.IsHigher(highest) {
+			highest = bp
+		}
+		return nil
+	})
+	if err != nil {
+		return "", err
+	}
+
+	return fmt.Sprintf("The highest seat ID is %d", highest.SeatID()), nil
 }
