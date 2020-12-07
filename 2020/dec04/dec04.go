@@ -23,6 +23,7 @@ type dec04 struct {
 	input string
 }
 
+// Solve the day's door
 func (d dec04) Solve() (string, error) {
 	// read the input file
 	var valid int
