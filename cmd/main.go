@@ -10,10 +10,11 @@ import (
 	"github.com/ablqk/adventofcode/2020/dec03"
 	"github.com/ablqk/adventofcode/2020/dec04"
 	"github.com/ablqk/adventofcode/2020/dec05"
+	"github.com/ablqk/adventofcode/2020/dec06"
 	"github.com/ablqk/adventofcode/doors"
 )
 
-const lastDay = 5
+const lastDay = 6
 
 func main() {
 	// -d for the day of December we want to play
@@ -36,6 +37,8 @@ func main() {
 		o = dec04.New("2020/dec04/input.txt")
 	case 5:
 		o = dec05.New("2020/dec05/input.txt")
+	case 6:
+		o = dec06.New("2020/dec06/input.txt")
 	// ===== ready for tomorrow =====
 	default:
 		log.Fatalf("unsupported day of the month %d", *d)

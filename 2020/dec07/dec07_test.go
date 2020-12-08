@@ -1,4 +1,4 @@
-package dec06
+package dec07
 
 import (
 	"testing"
@@ -6,8 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestDec06_Solve(t *testing.T) {
+func TestDec07_Solve(t *testing.T) {
 	s, err := New("testdata/in.txt").Solve()
 	assert.NoError(t, err)
-	assert.Contains(t, s, "11")
+	assert.Contains(t, s, "")
 }
