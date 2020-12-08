@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGroup(t *testing.T) {
+func TestGroupPartOne(t *testing.T) {
 	tt := map[string]struct {
 		answers       []string
 		expectedCount int
@@ -23,7 +23,33 @@ func TestGroup(t *testing.T) {
 
 	for name, tc := range tt {
 		t.Run(name, func(t *testing.T) {
-			g := newGroup()
+			g := newGroupPartOne()
+			for _, s := range tc.answers {
+				g.InsertAnswer([]byte(s))
+			}
+			assert.Equal(t, tc.expectedCount, g.CountYeses())
+		})
+	}
+}
+
+func TestGroupPartTwo(t *testing.T) {
+	tt := map[string]struct {
+		answers       []string
+		expectedCount int
+	}{
+		"b": {
+			answers:       []string{"abc", "ab", "banana", "byte"},
+			expectedCount: 1,
+		},
+		"one answer": {
+			answers:       []string{"abc"},
+			expectedCount: 3,
+		},
+	}
+
+	for name, tc := range tt {
+		t.Run(name, func(t *testing.T) {
+			g := newGroupPartTwo()
 			for _, s := range tc.answers {
 				g.InsertAnswer([]byte(s))
 			}
