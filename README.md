@@ -33,3 +33,4 @@ make test
 - I took the liberty of a few [0] without checking the length of the slice. These occasions are systematically accompanied by a `// todo`. Given the importance of the code and the ungodly hour of the night, I can only hope that some day the will is there to correct this. Don't do this at home.
 - The methods of the fileread package should probably ignore empty lines (December 4: no). A lot of shortcuts are made here, as the inputs are totally under control. Error management could use some consolidation.
 - Each door's code tends to reside in the func given as parameter to readAndApply. I would like to find a way to pull these out for unit testing and readbility.
+- I am particularly not proud of the quality found in Dec 7th. The comments look like the Dune planet and the naming is Lewis Carollesque.
