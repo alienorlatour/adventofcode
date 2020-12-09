@@ -1,14 +1,15 @@
-package dec07
+package part1
 
 import (
 	"fmt"
 	"testing"
 
+	"github.com/ablqk/adventofcode/2020/dec07/defs"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-func TestBagRuleTree_ParseLine(t *testing.T) {
+func TestContainersWise_ParseLine(t *testing.T) {
 	tt := map[string]struct {
 		lines        []string
 		expectedTree string
@@ -47,9 +48,9 @@ func TestBagRuleTree_ParseLine(t *testing.T) {
 
 	for name, tc := range tt {
 		t.Run(name, func(t *testing.T) {
-			bgt := BagRuleTree{}
+			bgt := containersWiseBRT{}
 			for _, s := range tc.lines {
-				err := bgt.parseLine(s)
+				err := bgt.ParseLine(s)
 				assert.NoError(t, err)
 			}
 			assert.Equal(t, tc.expectedTree, fmt.Sprintf("%v", bgt))
@@ -57,8 +58,8 @@ func TestBagRuleTree_ParseLine(t *testing.T) {
 	}
 }
 
-func TestBagRuleTree_Containers(t *testing.T) {
-	bgt := BagRuleTree{}
+func TestContainersWise_Containers(t *testing.T) {
+	bgt := containersWiseBRT{}
 	for _, s := range []string{
 		"light red bags contain 1 bright white bag, 2 muted yellow bags.",
 		"dark orange bags contain 3 bright white bags, 4 muted yellow bags.",
@@ -69,12 +70,12 @@ func TestBagRuleTree_Containers(t *testing.T) {
 		"vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.",
 		"faded blue bags contain no other bags.",
 		"dotted black bags contain no other bags."} {
-		err := bgt.parseLine(s)
+		err := bgt.ParseLine(s)
 		require.NoError(t, err)
 	}
 
 	tt := map[string]struct {
-		lookFor      Colour
+		lookFor      defs.Colour
 		expectedSize int
 	}{
 		"nominal": {
@@ -85,9 +86,7 @@ func TestBagRuleTree_Containers(t *testing.T) {
 
 	for name, tc := range tt {
 		t.Run(name, func(t *testing.T) {
-			containers := bgt.Containers(tc.lookFor)
-			fmt.Println("cc", containers) // todo alienor
-			assert.Equal(t, tc.expectedSize, len(containers.Slice()))
+			assert.Equal(t, tc.expectedSize, bgt.Count(tc.lookFor))
 		})
 	}
 }
