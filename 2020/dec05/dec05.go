@@ -5,8 +5,8 @@ import (
 	"math"
 	"strings"
 
-	"github.com/ablqk/adventofcode/2020/fileread"
 	"github.com/ablqk/adventofcode/doors"
+	"github.com/ablqk/adventofcode/libs/fileread"
 )
 
 // New instance of the Door for December 5

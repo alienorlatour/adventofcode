@@ -3,8 +3,8 @@ package dec02
 import (
 	"fmt"
 
-	"github.com/ablqk/adventofcode/2020/fileread"
 	"github.com/ablqk/adventofcode/doors"
+	"github.com/ablqk/adventofcode/libs/fileread"
 )
 
 // New instance of the door for December 2nd
