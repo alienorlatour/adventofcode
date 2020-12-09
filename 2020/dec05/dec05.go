@@ -9,6 +9,8 @@ import (
 	"github.com/ablqk/adventofcode/doors"
 )
 
+// New instance of the Door for December 5
+// 1935 – Mary McLeod Bethune founds the National Council of Negro Women in New York City.
 func New(input string) doors.Solver {
 	return dec05{input}
 }
@@ -17,6 +19,7 @@ type dec05 struct {
 	input string
 }
 
+// Solve the day's problem
 func (d dec05) Solve() (string, error) {
 	// we need to keep the highest and lowest seats
 	var highest BoardingPass
