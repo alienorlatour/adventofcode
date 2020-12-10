@@ -8,22 +8,23 @@ import (
 )
 
 // New instance of the Door for December 9
-func New(input string) doors.Solver {
-	return dec09{input}
+func New(input string, preambleSize int) doors.Solver {
+	return dec09{input: input, preambleSize: preambleSize}
 }
 
 type dec09 struct {
-	input string
+	input        string
+	preambleSize int
 }
 
 // Solve the day's problem
 func (d dec09) Solve() (string, error) {
-	var count int
-	err := fileread.ReadAndApply(d.input, func(s string) error {
-		return nil
-	})
+	input, err := fileread.ReadInts(d.input)
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("%d", count), nil
+
+	c := XMAS{d.preambleSize}.FindFirstInvalid(input)
+
+	return fmt.Sprintf("First invalid value is %d", c), nil
 }
