@@ -3,8 +3,8 @@ package dec06
 import (
 	"fmt"
 
-	"github.com/ablqk/adventofcode/2020/fileread"
 	"github.com/ablqk/adventofcode/doors"
+	"github.com/ablqk/adventofcode/libs/fileread"
 )
 
 // New instance of the Door for December 6
@@ -20,7 +20,7 @@ type dec06 struct {
 // Solve the day's problem
 func (d dec06) Solve() (string, error) {
 	var count int
-	 g:= newGroupPartTwo()
+	g := newGroupPartTwo()
 	err := fileread.ReadAndApply(d.input, func(s string) error {
 		if s == "" {
 			// this is the end of one group and the beginning of another

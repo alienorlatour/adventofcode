@@ -3,8 +3,8 @@ package dec01
 import (
 	"fmt"
 
-	"github.com/ablqk/adventofcode/2020/fileread"
 	"github.com/ablqk/adventofcode/doors"
+	"github.com/ablqk/adventofcode/libs/fileread"
 )
 
 const expectedTotal = 2020
@@ -44,4 +44,3 @@ func findMatch2(lines []int) (int, int, error) {
 	}
 	return 0, 0, fmt.Errorf("no match found")
 }
-
