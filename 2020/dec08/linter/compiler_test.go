@@ -31,3 +31,22 @@ func TestCompiler_CompileLine(t *testing.T) {
 		})
 	}
 }
+
+func TestCompiler_Patch(t *testing.T) {
+	lines := []codeLine{
+		{instr: nop},
+		{instr: acc, value: 1},
+		{instr: jmp, value: 4},
+		{instr: acc, value: 3},
+		{instr: jmp, value: -3},
+		{instr: acc, value: -99},
+		{instr: acc, value: 1},
+		{instr: jmp, value: -4},
+		{instr: acc, value: 6},
+	}
+	code := Code{lines:  lines}
+	compiler := Compiler{code: code}
+
+	i := compiler.Patch()
+	assert.Equal(t, 8, i)
+}

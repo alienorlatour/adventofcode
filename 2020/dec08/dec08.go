@@ -27,7 +27,8 @@ func (d dec08) Solve() (string, error) {
 		return "", err
 	}
 
-	c := comp.Lint()
+	// c, _ := comp.Lint()
+	c := comp.Patch()
 
 	return fmt.Sprintf("Looping at accumulator value %d", c), nil
 }
