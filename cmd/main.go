@@ -14,11 +14,12 @@ import (
 	"github.com/ablqk/adventofcode/2020/dec07"
 	"github.com/ablqk/adventofcode/2020/dec08"
 	"github.com/ablqk/adventofcode/2020/dec09"
+	"github.com/ablqk/adventofcode/2020/dec10"
 	"github.com/ablqk/adventofcode/doors"
 )
 
 const (
-	lastDay = 9
+	lastDay = 10
 )
 
 func main() {
@@ -50,6 +51,8 @@ func main() {
 		o = dec08.New("2020/dec08/input.txt")
 	case 9:
 		o = dec09.New("2020/dec09/input.txt", 25)
+	case 10:
+		o = dec10.New("2020/dec10/input.txt")
 	// ===== ready for tomorrow =====
 	default:
 		log.Fatalf("unsupported day of the month %d", *d)

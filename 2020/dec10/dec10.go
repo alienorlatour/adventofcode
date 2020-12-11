@@ -2,6 +2,7 @@ package dec10
 
 import (
 	"fmt"
+	"sort"
 
 	"github.com/ablqk/adventofcode/doors"
 	"github.com/ablqk/adventofcode/libs/fileread"
@@ -18,12 +19,39 @@ type dec10 struct {
 
 // Solve the day's problem
 func (d dec10) Solve() (string, error) {
-	var count int
-	err := fileread.ReadAndApply(d.input, func(s string) error {
-		return nil
-	})
+	adapters, err := fileread.ReadInts(d.input)
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("%d", count), nil
+
+	sort.Ints(adapters)
+	diff := countDifferences(adapters)
+
+	// todo danger here
+	return fmt.Sprintf("%d", diff.counters[1]*diff.counters[3]), nil
+}
+
+func countDifferences(adapters []int) differenciator {
+	diff := differenciator{
+		counters: make(map[int]int),
+	}
+	// count initial adapter starting from 0
+	// todo danger here as well
+	diff.counters[adapters[0]] = 1
+	for i := range adapters[:len(adapters)-1] {
+		dfrce := adapters[i+1] - adapters[i]
+		_, ok := diff.counters[dfrce]
+		if !ok {
+			diff.counters[dfrce] = 1
+		} else {
+			diff.counters[dfrce]++
+		}
+	}
+	// count the device's difference
+	diff.counters[3]++
+	return diff
+}
+
+type differenciator struct {
+	counters map[int]int
 }
