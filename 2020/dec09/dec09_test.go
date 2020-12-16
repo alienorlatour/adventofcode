@@ -7,7 +7,8 @@ import (
 )
 
 func TestDec09_Solve(t *testing.T) {
-	s, err := New("testdata/in.txt").Solve()
+	s, err := New("testdata/in.txt", 5).Solve()
 	assert.NoError(t, err)
-	assert.Contains(t, s, "")
+	// assert.Contains(t, s, "127")
+	assert.Contains(t, s, "62")
 }
