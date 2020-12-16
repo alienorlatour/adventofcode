@@ -24,13 +24,18 @@ func (d dec10) Solve() (string, error) {
 		return "", err
 	}
 
-	sort.Ints(adapters)
-	diff := countDifferences(adapters)
+	// add the initial element
+	adapters = append(adapters, 0)
 
-	// todo danger here
-	return fmt.Sprintf("%d", diff.counters[1]*diff.counters[3]), nil
+	sort.Ints(adapters)
+
+	count := countArrangements(adapters)
+
+	return fmt.Sprintf("found %d arrangements", count), nil
 }
 
+// countDifferences for part 1
+// then solve using diff.counters[1]*diff.counters[3]
 func countDifferences(adapters []int) differenciator {
 	diff := differenciator{
 		counters: make(map[int]int),
