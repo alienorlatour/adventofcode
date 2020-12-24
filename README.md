@@ -8,6 +8,14 @@ Each day of December is found under dec followed by the two-digit number of the 
 
 ## Quickstart
 
+### Prerequisites
+
+You will need a [functionning version of go](https://golang.org/doc/install). I'm using the latest to this day, which is 1.15.
+
+The repo can be used without the make command, but it is highly recommanded.
+
+### Run
+
 1. Checkout the project, then download vendors:
     ```
     make init
