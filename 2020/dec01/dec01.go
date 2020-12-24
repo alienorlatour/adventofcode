@@ -5,6 +5,7 @@ import (
 
 	"github.com/ablqk/adventofcode/doors"
 	"github.com/ablqk/adventofcode/libs/fileread"
+  "github.com/ablqk/adventofcode/libs/match"
 )
 
 const expectedTotal = 2020
@@ -26,21 +27,9 @@ func (d dec01) Solve() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	l, m, err := findMatch2(lines)
+	l, m, err := match.FindMatch2(lines, expectedTotal)
 	if err != nil {
 		return "", err
 	}
 	return fmt.Sprintf("%d * %d = %d", l, m, l*m), nil
-}
-
-func findMatch2(lines []int) (int, int, error) {
-	// loop to find 2 values that add up to expectedTotal
-	for i, l := range lines[:len(lines)-1] {
-		for _, m := range lines[i+1:] {
-			if l+m == expectedTotal {
-				return l, m, nil
-			}
-		}
-	}
-	return 0, 0, fmt.Errorf("no match found")
 }
