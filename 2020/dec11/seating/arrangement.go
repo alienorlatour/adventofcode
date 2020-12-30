@@ -12,7 +12,7 @@ const (
 
 // Arrangement describes the arrangement of seats of floor tiles in the room
 type Arrangement struct {
-	width, height uint
+	width, height int
 	room          [][]square
 }
 
@@ -34,14 +34,14 @@ func (s square) String() string {
 
 // a seat's coordinates
 type coordinate struct {
-	x, y uint
+	x, y int
 }
 
 func (a *Arrangement) ParseLine(s string) error {
 	// validate width
 	if a.width == 0 {
-		a.width = uint(len(s))
-	} else if a.width != uint(len(s)) {
+		a.width = int(len(s))
+	} else if a.width != int(len(s)) {
 		return fmt.Errorf("invalid line length, expected %d got %d", a.width, len(s))
 	}
 	// parse each char
@@ -93,7 +93,7 @@ func (a *Arrangement) ForkRoom() [][]square {
 
 func (a *Arrangement) String() string {
 	var s string
-	for i := uint(0); i < a.height; i++ {
+	for i := 0; i < a.height; i++ {
 		for _, place := range a.room[i] {
 			s += place.String()
 		}
