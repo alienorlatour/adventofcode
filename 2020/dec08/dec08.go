@@ -20,9 +20,7 @@ type dec08 struct {
 // Solve the day's problem
 func (d dec08) Solve() (string, error) {
 	var comp linter.Compiler
-	err := fileread.ReadAndApply(d.input, func(s string) error {
-		return comp.CompileLine(s)
-	})
+	err := fileread.ReadAndApply(d.input, comp.CompileLine)
 	if err != nil {
 		return "", err
 	}
