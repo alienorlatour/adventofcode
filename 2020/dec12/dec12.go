@@ -2,7 +2,9 @@ package dec12
 
 import (
 	"fmt"
+	"math"
 
+	"github.com/ablqk/adventofcode/2020/dec12/ship/compiler"
 	"github.com/ablqk/adventofcode/doors"
 	"github.com/ablqk/adventofcode/libs/fileread"
 )
@@ -18,12 +20,18 @@ type dec12 struct {
 
 // Solve the day's problem
 func (d dec12) Solve() (string, error) {
-	var count int
-	err := fileread.ReadAndApply(d.input, func(s string) error {
-		return nil
-	})
+	var c compiler.Compiler
+	err := fileread.ReadAndApply(d.input, c.ParseLine)
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("%d", count), nil
+
+	r := c.Compile()
+	err = r.Run()
+	if err != nil {
+		return "Error while running the code: " + err.Error(), nil
+	}
+
+	manhattan := math.Abs(float64(r.Longitude())) + math.Abs(float64(r.Lattitude()))
+	return fmt.Sprintf("Manhattan distance is %.0f.", manhattan), nil
 }
