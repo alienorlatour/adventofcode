@@ -3,13 +3,13 @@ package ship
 type Function int
 
 const (
-	GoNorth Function = iota
-	GoSouth
-	GoEast
-	GoWest
-	TurnLeft
-	TurnRight
-	GoForward
+	North Function = iota
+	South
+	East
+	West
+	Port
+	Star
+	Forward
 )
 
 type Instruction struct {
@@ -19,6 +19,6 @@ type Instruction struct {
 
 type Runner interface {
 	Run() error
-	Lattitude() int
+	Latitude() int
 	Longitude() int
 }

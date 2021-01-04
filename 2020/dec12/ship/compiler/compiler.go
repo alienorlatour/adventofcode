@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/ablqk/adventofcode/2020/dec12/ship"
-	"github.com/ablqk/adventofcode/2020/dec12/ship/part1"
+	"github.com/ablqk/adventofcode/2020/dec12/ship/part2"
 )
 
 type Compiler struct {
@@ -16,19 +16,19 @@ func (c *Compiler) ParseLine(s string) error {
 	var instr ship.Instruction
 	switch s[0] {
 	case 'N':
-		instr.Function = ship.GoNorth
+		instr.Function = ship.North
 	case 'S':
-		instr.Function = ship.GoSouth
+		instr.Function = ship.South
 	case 'E':
-		instr.Function = ship.GoEast
+		instr.Function = ship.East
 	case 'W':
-		instr.Function = ship.GoWest
+		instr.Function = ship.West
 	case 'L':
-		instr.Function = ship.TurnLeft
+		instr.Function = ship.Port
 	case 'R':
-		instr.Function = ship.TurnRight
+		instr.Function = ship.Star
 	case 'F':
-		instr.Function = ship.GoForward
+		instr.Function = ship.Forward
 	default:
 		return fmt.Errorf("invalid instruction %s", s)
 	}
@@ -43,5 +43,6 @@ func (c *Compiler) ParseLine(s string) error {
 }
 
 func (c *Compiler) Compile() ship.Runner {
-	return part1.New(c.code, 90)
+	// return part1.New(c.code, 90)
+	return part2.New(c.code, 1, 10)
 }
