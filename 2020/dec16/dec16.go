@@ -7,7 +7,7 @@ import (
 	"github.com/ablqk/adventofcode/libs/fileread"
 )
 
-// New instance of the Door for December 9
+// New instance of the Door for December 16
 func New(input string) doors.Solver {
 	return dec16{input}
 }

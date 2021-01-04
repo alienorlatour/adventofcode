@@ -15,11 +15,17 @@ import (
 	"github.com/ablqk/adventofcode/2020/dec08"
 	"github.com/ablqk/adventofcode/2020/dec09"
 	"github.com/ablqk/adventofcode/2020/dec10"
+	"github.com/ablqk/adventofcode/2020/dec11"
+	"github.com/ablqk/adventofcode/2020/dec12"
+	"github.com/ablqk/adventofcode/2020/dec13"
+	"github.com/ablqk/adventofcode/2020/dec14"
+	"github.com/ablqk/adventofcode/2020/dec15"
+	"github.com/ablqk/adventofcode/2020/dec16"
 	"github.com/ablqk/adventofcode/doors"
 )
 
 const (
-	lastDay = 10
+	lastDay = 16
 )
 
 func main() {
@@ -53,6 +59,18 @@ func main() {
 		o = dec09.New("2020/dec09/input.txt", 25)
 	case 10:
 		o = dec10.New("2020/dec10/input.txt")
+	case 11:
+		o = dec11.New("2020/dec11/input.txt")
+	case 12:
+		o = dec12.New("2020/dec12/input.txt")
+	case 13:
+		o = dec13.New("2020/dec13/input.txt")
+	case 14:
+		o = dec14.New("2020/dec14/input.txt")
+	case 15:
+		o = dec15.New("2020/dec15/input.txt")
+	case 16:
+		o = dec16.New("2020/dec16/input.txt")
 	// ===== ready for tomorrow =====
 	default:
 		log.Fatalf("unsupported day of the month %d", *d)
