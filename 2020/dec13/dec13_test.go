@@ -9,5 +9,5 @@ import (
 func TestDec13_Solve(t *testing.T) {
 	s, err := New("testdata/in.txt").Solve()
 	assert.NoError(t, err)
-	assert.Contains(t, s, "")
+	assert.Contains(t, s, "Bus 59 departs in 5 minutes: 295.")
 }
