@@ -36,7 +36,7 @@ func arrangements(ones int) int {
 	case 2: return 2
 	case 3: return 4
 	case 4: return 7
-	case 5: return 12
+	case 5: return 13
 	}
 	return 0
 }

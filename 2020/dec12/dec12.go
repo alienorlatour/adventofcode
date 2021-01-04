@@ -32,6 +32,6 @@ func (d dec12) Solve() (string, error) {
 		return "Error while running the code: " + err.Error(), nil
 	}
 
-	manhattan := math.Abs(float64(r.Longitude())) + math.Abs(float64(r.Lattitude()))
+	manhattan := math.Abs(float64(r.Longitude())) + math.Abs(float64(r.Latitude()))
 	return fmt.Sprintf("Manhattan distance is %.0f.", manhattan), nil
 }

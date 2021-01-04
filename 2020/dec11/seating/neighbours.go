@@ -60,11 +60,11 @@ func min(i, j int) int {
 
 // maxMinusOne returns the maximum between x and minusOne-1, taking charge of the overflow problem
 func maxMinusOne(i, minusOne uint) uint {
+	j := minusOne - 1
 	if minusOne == 0 {
 		// uint(0-1) overflows
-		return 0
+		j = 0
 	}
-	j := minusOne - 1
 	if i >= j {
 		return i
 	}
