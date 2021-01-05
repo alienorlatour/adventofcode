@@ -1,4 +1,4 @@
-package company
+package bus
 
 import (
 	"testing"
@@ -8,9 +8,9 @@ import (
 
 func TestBusCompany_FirstDeparture(t *testing.T) {
 	tt := map[string]struct {
-		time int
+		time int64
 		bus  Bus
-		next int
+		next int64
 	}{
 		"nominal": {
 			time: 1,
@@ -26,7 +26,7 @@ func TestBusCompany_FirstDeparture(t *testing.T) {
 
 	for name, tc := range tt {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, tc.next, tc.bus.firstDeparture(tc.time))
+			assert.Equal(t, tc.next, tc.bus.FirstDeparture(tc.time))
 		})
 	}
 }
