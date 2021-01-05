@@ -64,7 +64,7 @@ func main() {
 	case 12:
 		o = dec12.New("2020/dec12/input.txt")
 	case 13:
-		o = dec13.New("2020/dec13/input.txt")
+		o = dec13.New("2020/dec13/input.txt", 471759240000000)
 	case 14:
 		o = dec14.New("2020/dec14/input.txt")
 	case 15:
