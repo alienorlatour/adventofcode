@@ -6,6 +6,8 @@ import (
 	"github.com/ablqk/adventofcode/2020/dec12/ship"
 )
 
+// New ship runner
+// direction is indicated like a clock: north is 0, west is 270
 func New(code []ship.Instruction, directionAngle int) ship.Runner {
 	return &runner{code: code, figurehead: directionAngle}
 }
@@ -13,7 +15,7 @@ func New(code []ship.Instruction, directionAngle int) ship.Runner {
 type runner struct {
 	code       []ship.Instruction
 	lat, long  int
-	figurehead int // north is 0, west is 270
+	figurehead int
 }
 
 // Latitude returns the ship's latitude
@@ -53,21 +55,29 @@ func (r *runner) execute(line ship.Instruction) error {
 	case ship.Port:
 		r.figurehead = (r.figurehead - line.Value + 360) % 360
 	case ship.Forward:
-		// this could be more elegant...
-		switch r.figurehead {
-		case 0:
-			r.lat += line.Value
-		case 180:
-			r.lat -= line.Value
-		case 90:
-			r.long += line.Value
-		case 270:
-			r.long -= line.Value
-		default:
-			return fmt.Errorf("unknown direction %d", r.figurehead)
+		err := r.forward(line.Value)
+		if err != nil {
+			return err
 		}
 	default:
 		return fmt.Errorf("unknown instruction %d", line.Function)
+	}
+	return nil
+}
+
+func (r *runner) forward(value int) error {
+	// this could be more elegant...
+	switch r.figurehead {
+	case 0:
+		r.lat += value
+	case 180:
+		r.lat -= value
+	case 90:
+		r.long += value
+	case 270:
+		r.long -= value
+	default:
+		return fmt.Errorf("unknown direction %d", r.figurehead)
 	}
 	return nil
 }

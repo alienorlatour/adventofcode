@@ -8,10 +8,12 @@ import (
 	"github.com/ablqk/adventofcode/2020/dec12/ship/part2"
 )
 
+// Compiler is a good way to compile the input code
 type Compiler struct {
 	code []ship.Instruction
 }
 
+// ParseLine and add it to the code
 func (c *Compiler) ParseLine(s string) error {
 	var instr ship.Instruction
 	switch s[0] {
@@ -42,6 +44,7 @@ func (c *Compiler) ParseLine(s string) error {
 	return nil
 }
 
+// Compile returns a runner on the compiled code
 func (c *Compiler) Compile() ship.Runner {
 	// return part1.New(c.code, 90)
 	return part2.New(c.code, 1, 10)

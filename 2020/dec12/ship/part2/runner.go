@@ -6,6 +6,7 @@ import (
 	"github.com/ablqk/adventofcode/2020/dec12/ship"
 )
 
+// New runner for part 2
 func New(code []ship.Instruction, waypoinyLat, waypointLong int) ship.Runner {
 	return &runner{
 		code:     code,
@@ -16,7 +17,7 @@ func New(code []ship.Instruction, waypoinyLat, waypointLong int) ship.Runner {
 type runner struct {
 	code     []ship.Instruction
 	ship     coordinate // 0,0 is the ship's starting position
-	waypoint coordinate // 0,0 is the ship's current position
+	waypoint coordinate // this is a vector, so 0,0 is the ship's current position
 }
 
 // coordinate represents a point or a vector on the map

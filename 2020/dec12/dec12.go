@@ -2,7 +2,6 @@ package dec12
 
 import (
 	"fmt"
-	"math"
 
 	"github.com/ablqk/adventofcode/2020/dec12/ship/compiler"
 	"github.com/ablqk/adventofcode/doors"
@@ -32,6 +31,14 @@ func (d dec12) Solve() (string, error) {
 		return "Error while running the code: " + err.Error(), nil
 	}
 
-	manhattan := math.Abs(float64(r.Longitude())) + math.Abs(float64(r.Latitude()))
-	return fmt.Sprintf("Manhattan distance is %.0f.", manhattan), nil
+	manhattan := abs(r.Longitude()) + abs(r.Latitude())
+	return fmt.Sprintf("Manhattan distance is %d.", manhattan), nil
+}
+
+// abs returns the absolute value of an int
+func abs(i int) int {
+	if i < 0 {
+		return -i
+	}
+	return i
 }
