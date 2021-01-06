@@ -16,7 +16,7 @@ func New(code []ship.Instruction, waypoinyLat, waypointLong int) ship.Runner {
 type runner struct {
 	code     []ship.Instruction
 	ship     coordinate // 0,0 is the ship's starting position
-	waypoint coordinate // 0,0 is the ship's current position
+	waypoint coordinate // this is a vector of the ship's bearing
 }
 
 // coordinate represents a point or a vector on the map
@@ -24,14 +24,14 @@ type coordinate struct {
 	lat, long int
 }
 
-// Latitude returns the ship's latitude
-func (r *runner) Latitude() int {
-	return r.ship.lat
-}
-
 // Longitude returns the ship's longitude
 func (r *runner) Longitude() int {
 	return r.ship.long
+}
+
+// Latitude returns the ship's latitude
+func (r *runner) Latitude() int {
+	return r.ship.lat
 }
 
 // Run the code
