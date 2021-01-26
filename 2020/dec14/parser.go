@@ -10,7 +10,7 @@ import (
 
 type Parser struct {
 	memory map[string]docking.Value
-	mask   docking.Mask
+	mask   docking.Mask1
 }
 
 func (p *Parser) Parse(s string) error {
@@ -39,10 +39,11 @@ func (p *Parser) parseMemAssignation(s string) error {
 	if err != nil {
 		return err
 	}
-	p.memory[res[1]] = value.ApplyMask(p.mask)
+	p.memory[res[1]] = p.mask.ApplyTo(value)
 	return nil
 }
 
+// Count adds up all the values
 func (p *Parser) Count() uint64 {
 	var count uint64
 	for _, v := range p.memory {
