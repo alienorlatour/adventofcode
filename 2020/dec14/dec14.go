@@ -3,6 +3,7 @@ package dec14
 import (
 	"fmt"
 
+	"github.com/ablqk/adventofcode/2020/dec14/docking"
 	"github.com/ablqk/adventofcode/doors"
 	"github.com/ablqk/adventofcode/libs/fileread"
 )
@@ -18,12 +19,13 @@ type dec14 struct {
 
 // Solve the day's problem
 func (d dec14) Solve() (string, error) {
-	var count int
-	err := fileread.ReadAndApply(d.input, func(s string) error {
-		return nil
-	})
+	p := Parser{
+		memory: make(map[string]docking.Value),
+	}
+	err := fileread.ReadAndApply(d.input, p.Parse)
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("%d", count), nil
+
+	return fmt.Sprintf("Final addition is %d.", p.Count()), nil
 }
