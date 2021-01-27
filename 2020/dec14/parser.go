@@ -3,14 +3,16 @@ package dec14
 import (
 	"fmt"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/ablqk/adventofcode/2020/dec14/docking"
 )
 
 type Parser struct {
-	memory map[string]docking.Value
-	mask   docking.Mask1
+	// memory map[string]docking.Value // part 1 was so simple
+	memory map[docking.Value]uint64
+	mask   docking.Mask2
 }
 
 func (p *Parser) Parse(s string) error {
@@ -25,7 +27,7 @@ func (p *Parser) Parse(s string) error {
 }
 
 func (p *Parser) parseNewMask(s string) (err error) {
-	p.mask, err = docking.NewMask(s)
+	p.mask, err = docking.NewMask2(s)
 	return err
 }
 
@@ -35,11 +37,18 @@ func (p *Parser) parseMemAssignation(s string) error {
 	if len(res) != 3 {
 		return fmt.Errorf("invalid line format: %s", s)
 	}
-	value, err := docking.NewDockingValue(res[2])
+	value, err := strconv.ParseUint(res[2], 10, 64)
 	if err != nil {
 		return err
 	}
-	p.memory[res[1]] = p.mask.ApplyTo(value)
+	key, err := docking.NewDockingValue(res[1])
+	if err != nil {
+		return err
+	}
+
+	for i := uint(0); i < 1 << p.mask.FloaterCount(); i++ {
+		p.memory[p.mask.Floater(key, i)] = value
+	}
 	return nil
 }
 
@@ -47,7 +56,7 @@ func (p *Parser) parseMemAssignation(s string) error {
 func (p *Parser) Count() uint64 {
 	var count uint64
 	for _, v := range p.memory {
-		count += v.Uint64()
+		count += v
 	}
 	return count
 }

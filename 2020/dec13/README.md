@@ -25,4 +25,4 @@ I would like to benchmark this version along with the use of the most magic GO f
 Meanwhile, for the sake of future users, I added the `startAt` parameter, to quicken things up a bit...
 
 
-[Read the story](./STORYhttps://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fablqk%2Fadventofcode%2Fpull%2Fnew%2Ffeature%2Fstorytelling.md)
+[Read the story](./STORY.md)

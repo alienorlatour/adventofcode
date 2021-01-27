@@ -9,13 +9,13 @@ import (
 func TestNewDockingValue(t *testing.T) {
 	v, err := NewDockingValue("11")
 	assert.NoError(t, err)
-	assert.Equal(t, value(11), v)
+	assert.Equal(t, Value(11), v)
 }
 
-func TestValue_ApplyMask(t *testing.T) {
+func TestMask1_ApplyTo(t *testing.T) {
 	m, _ := NewMask("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X")
 
-	assert.Equal(t, value(73), value(11).ApplyMask(m))
-	assert.Equal(t, value(101), value(101).ApplyMask(m))
-	assert.Equal(t, value(64), value(0).ApplyMask(m))
+	assert.Equal(t, Value(73), m.ApplyTo(Value(11)))
+	assert.Equal(t, Value(101), m.ApplyTo(Value(101)))
+	assert.Equal(t, Value(64), m.ApplyTo(Value(0)))
 }
