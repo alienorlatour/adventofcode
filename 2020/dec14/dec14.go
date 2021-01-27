@@ -20,7 +20,7 @@ type dec14 struct {
 // Solve the day's problem
 func (d dec14) Solve() (string, error) {
 	p := Parser{
-		memory: make(map[string]docking.Value),
+		memory: make(map[docking.Value]uint64),
 	}
 	err := fileread.ReadAndApply(d.input, p.Parse)
 	if err != nil {

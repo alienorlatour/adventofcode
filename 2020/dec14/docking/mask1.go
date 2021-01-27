@@ -3,21 +3,12 @@ package docking
 import (
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 type Mask1 struct {
 	ones  Value // holds 1 where the mask has a one
 	zeros Value // holds 0 where the mask has a zero
 }
-
-const maxMask = 1<<36 - 1 // 36 ones
-
-// onesReplacer changes all Xes to ones
-var onesReplacer = strings.NewReplacer("X", "1")
-
-// zerosReplacer changes all Xes to 0s
-var zerosReplacer = strings.NewReplacer("X", "0")
 
 // NewMask parses a mask and returns it
 func NewMask(s string) (Mask1, error) {
@@ -37,5 +28,5 @@ func NewMask(s string) (Mask1, error) {
 }
 
 func (m Mask1) ApplyTo(v Value) Value {
-	return (v | m.ones) & m.zeros
+	return v & m.zeros | m.ones
 }
