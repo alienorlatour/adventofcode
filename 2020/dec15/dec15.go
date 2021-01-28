@@ -4,26 +4,23 @@ import (
 	"fmt"
 
 	"github.com/ablqk/adventofcode/doors"
-	"github.com/ablqk/adventofcode/libs/fileread"
 )
 
 // New instance of the Door for December 15
-func New(input string) doors.Solver {
-	return dec15{input}
+func New(input []int, part1, part2 int) doors.Solver {
+	return dec15{input: input, end1: part1, end2: part2}
 }
 
 type dec15 struct {
-	input string
+	input []int
+	end1  int // if a 3rd part was a possibility, an array would be better
+	end2  int
 }
 
 // Solve the day's problem
 func (d dec15) Solve() (string, error) {
-	var count int
-	err := fileread.ReadAndApply(d.input, func(s string) error {
-		return nil
-	})
-	if err != nil {
-		return "", err
-	}
-	return fmt.Sprintf("%d", count), nil
+	m := NewMemoryGame(d.input)
+	v1 := m.ValueAt(d.end1)
+	v2 := m.ValueAt(d.end2)
+	return fmt.Sprintf("Value at %d is %d and %d is %d.", d.end1, v1, d.end2, v2), nil
 }
