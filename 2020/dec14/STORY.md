@@ -85,3 +85,5 @@ The entire 36-bit address space still begins initialized to the value 0 at every
 Execute the initialization program using an emulator for a version 2 decoder chip. What is the sum of all values left in memory after it completes?
 
 Your puzzle answer was 3369767240513.
+
+[Go to December 15](../dec15/STORY.md)

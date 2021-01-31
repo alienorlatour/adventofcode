@@ -21,11 +21,20 @@ import (
 	"github.com/ablqk/adventofcode/2020/dec14"
 	"github.com/ablqk/adventofcode/2020/dec15"
 	"github.com/ablqk/adventofcode/2020/dec16"
+	"github.com/ablqk/adventofcode/2020/dec17"
+	"github.com/ablqk/adventofcode/2020/dec18"
+	"github.com/ablqk/adventofcode/2020/dec19"
+	"github.com/ablqk/adventofcode/2020/dec20"
+	"github.com/ablqk/adventofcode/2020/dec21"
+	"github.com/ablqk/adventofcode/2020/dec22"
+	"github.com/ablqk/adventofcode/2020/dec23"
+	"github.com/ablqk/adventofcode/2020/dec24"
+	"github.com/ablqk/adventofcode/2020/dec25"
 	"github.com/ablqk/adventofcode/doors"
 )
 
 const (
-	lastDay = 16
+	lastDay = 25
 )
 
 func main() {
@@ -71,6 +80,24 @@ func main() {
 		o = dec15.New("2020/dec15/input.txt")
 	case 16:
 		o = dec16.New("2020/dec16/input.txt")
+	case 17:
+		o = dec17.New("2020/dec17/input.txt")
+	case 18:
+		o = dec18.New("2020/dec18/input.txt")
+	case 19:
+		o = dec19.New("2020/dec19/input.txt")
+	case 20:
+		o = dec20.New("2020/dec20/input.txt")
+	case 21:
+		o = dec21.New("2020/dec21/input.txt")
+	case 22:
+		o = dec22.New("2020/dec22/input.txt")
+	case 23:
+		o = dec23.New("2020/dec23/input.txt")
+	case 24:
+		o = dec24.New("2020/dec24/input.txt")
+	case 25:
+		o = dec25.New("2020/dec25/input.txt")
 	// ===== ready for tomorrow =====
 	default:
 		log.Fatalf("unsupported day of the month %d", *d)
