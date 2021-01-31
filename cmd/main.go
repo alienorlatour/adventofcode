@@ -79,7 +79,7 @@ func main() {
 	case 15:
 		o = dec15.New([]int{9,3,1,0,8,4}, 2020, 30000000)
 	case 16:
-		o = dec16.New("2020/dec16/input.txt")
+		o = dec16.New("2020/dec16/rules.txt", "2020/dec16/nearby.txt")
 	case 17:
 		o = dec17.New("2020/dec17/input.txt")
 	case 18:
