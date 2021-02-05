@@ -11,14 +11,17 @@ import (
 	"github.com/ablqk/adventofcode/libs/fileread"
 )
 
+const departureRule = "departure"
+
 // New instance of the Door for December 16
-func New(rules, tickets string) doors.Solver {
-	return dec16{rules: rules, tickets: tickets}
+func New(rules, tickets string, mine string) doors.Solver {
+	return dec16{rules: rules, tickets: tickets, mine: mine}
 }
 
 type dec16 struct {
 	rules   string
 	tickets string
+	mine    string
 }
 
 // Solve the day's problem
@@ -36,25 +39,32 @@ func (d dec16) Solve() (string, error) {
 	if err != nil {
 		return "", err
 	}
+	r.Init()
 
 	// parse tickets
-	var sum int
 	err = fileread.ReadAndApply(d.tickets, func(s string) error {
 		ticket, err := parseTicket(s)
 		if err != nil {
 			return err
 		}
-		sum += r.InvalidSum(ticket)
+		r.SieveTicket(ticket)
+
 		return nil
 	})
 	if err != nil {
 		return "", err
 	}
 
-	return fmt.Sprintf("Scanning error rate is %d.", sum), nil
+	mine, err := parseTicket(d.mine)
+	if err != nil {
+		return "", err
+	}
+	departures := r.Departures(mine)
+
+	return fmt.Sprintf("Departure values multiply up to %d.", departures), nil
 }
 
-func parseTicket(s string) ([]int, error) {
+func parseTicket(s string) (rules.Ticket, error) {
 	sp := strings.Split(s, ",")
 	t := make([]int, len(sp))
 	var err error
@@ -89,5 +99,5 @@ func parseRule(s string) (rules.Rule, error) {
 	if err != nil {
 		return rules.Rule{}, fmt.Errorf("invalid line format, cannot parse second max: %s", s)
 	}
-	return rules.NewRule(min1, max1, min2, max2)
+	return rules.NewRule(min1, max1, min2, max2, s[:len(departureRule)] == departureRule)
 }
