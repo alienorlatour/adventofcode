@@ -16,4 +16,3 @@ var zerosReplacer = strings.NewReplacer("X", "0")
 
 // zerosReplacer changes all non-Xes to 0s and Xes to 1s
 var floaterReplacer = strings.NewReplacer("1", "0", "X", "1")
-

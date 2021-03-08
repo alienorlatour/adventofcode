@@ -22,8 +22,8 @@ func NewMask2(s string) (Mask2, error) {
 		return Mask2{}, fmt.Errorf("invalid mask: %s, %v", s, err)
 	}
 	return Mask2{
-		ones: Value(ones),
-		exes: Value(x),
+		ones:         Value(ones),
+		exes:         Value(x),
 		floaterCount: countOnes(x),
 	}, nil
 }
@@ -64,7 +64,7 @@ func (m Mask2) Floater(v Value, i uint) Value {
 		x >>= 1
 	}
 	// zeros contains ones where we want to force a zero, let's turn it over
-	zeros^=maxUInt36
+	zeros ^= maxUInt36
 
 	return v&zeros | ones | m.ones
 }

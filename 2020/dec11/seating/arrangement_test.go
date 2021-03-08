@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/ablqk/adventofcode/libs/fileread"
+	"github.com/ablqk/adventofcode/pkg/fileread"
 	"github.com/stretchr/testify/assert"
 )
 

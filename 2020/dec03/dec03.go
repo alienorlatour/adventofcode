@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/ablqk/adventofcode/doors"
-	"github.com/ablqk/adventofcode/libs/fileread"
+	"github.com/ablqk/adventofcode/pkg/fileread"
 )
 
 const (

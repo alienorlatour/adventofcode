@@ -42,4 +42,3 @@ func (b *containersWiseBRT) allContainers(c defs.Colour) *ColourSet {
 func (b *containersWiseBRT) ParseLine(s string) error {
 	return defs.ParseLine(s, b.addContains)
 }
-

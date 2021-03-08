@@ -44,11 +44,10 @@ func newGroupPartTwo() Group {
 	}
 }
 
-
 // groupSecundo counts the number of yes answers for everyone in the group
 // Another algorithm could have been to keep the first answer and then remove all letters that are not present in each of the following answers.
 type groupSecundo struct {
-	yeses map[byte]int
+	yeses        map[byte]int
 	totalAnswers int
 }
 

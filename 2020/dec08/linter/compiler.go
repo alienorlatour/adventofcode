@@ -37,7 +37,7 @@ func (comp *Compiler) Lint() (int, error) {
 func (comp *Compiler) Patch() int {
 	accValue, err := comp.code.Lint()
 	var fixLine int
-	for err != nil && fixLine < len(comp.code.lines){
+	for err != nil && fixLine < len(comp.code.lines) {
 		// look for next nop/jmp line
 		for !canFix(comp.code.lines[fixLine]) {
 			fixLine++
@@ -46,7 +46,7 @@ func (comp *Compiler) Patch() int {
 		f := comp.code.Fork()
 		f.lines[fixLine] = fix(f.lines[fixLine])
 		accValue, err = f.Lint()
-		fixLine++// don't try the same line in a loop
+		fixLine++ // don't try the same line in a loop
 	}
 	return accValue
 }

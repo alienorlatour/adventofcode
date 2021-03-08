@@ -28,5 +28,5 @@ func NewMask(s string) (Mask1, error) {
 }
 
 func (m Mask1) ApplyTo(v Value) Value {
-	return v & m.zeros | m.ones
+	return v&m.zeros | m.ones
 }

@@ -7,7 +7,7 @@ import (
 	"github.com/ablqk/adventofcode/2020/dec13/company"
 	"github.com/ablqk/adventofcode/2020/dec13/rule"
 	"github.com/ablqk/adventofcode/doors"
-	"github.com/ablqk/adventofcode/libs/fileread"
+	"github.com/ablqk/adventofcode/pkg/fileread"
 )
 
 // New instance of the Door for December 13

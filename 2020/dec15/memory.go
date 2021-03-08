@@ -11,7 +11,7 @@ func NewMemoryGame(input []int) MemoryGame {
 	occurences := make(map[int]int)
 	// add to the occurences every value but the last
 	for i, n := range input[:len(input)-1] {
-		occurences[n] = i+1
+		occurences[n] = i + 1
 	}
 	return MemoryGame{
 		occurences:   occurences,

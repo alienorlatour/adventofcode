@@ -44,7 +44,7 @@ func TestCompiler_Patch(t *testing.T) {
 		{instr: jmp, value: -4},
 		{instr: acc, value: 6},
 	}
-	code := Code{lines:  lines}
+	code := Code{lines: lines}
 	compiler := Compiler{code: code}
 
 	i := compiler.Patch()
