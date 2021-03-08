@@ -40,7 +40,7 @@ func TestParseBP(t *testing.T) {
 				assert.Equal(t, tc.seatID, BoardingPass{
 					row:    r,
 					column: c,
-				}.SeatID())// this should be tested in its own UT
+				}.SeatID()) // this should be tested in its own UT
 			}
 		})
 	}

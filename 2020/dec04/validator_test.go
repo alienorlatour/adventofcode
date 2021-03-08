@@ -11,7 +11,6 @@ func TestBYR(t *testing.T) {
 	assert.False(t, mandatoryKeys["byr"]("2003"))
 }
 
-
 func TestHGT(t *testing.T) {
 	assert.True(t, mandatoryKeys["hgt"]("60in"))
 	assert.True(t, mandatoryKeys["hgt"]("190cm"))

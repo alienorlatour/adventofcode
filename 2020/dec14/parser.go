@@ -46,7 +46,7 @@ func (p *Parser) parseMemAssignation(s string) error {
 		return err
 	}
 
-	for i := uint(0); i < 1 << p.mask.FloaterCount(); i++ {
+	for i := uint(0); i < 1<<p.mask.FloaterCount(); i++ {
 		p.memory[p.mask.Floater(key, i)] = value
 	}
 	return nil

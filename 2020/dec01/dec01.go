@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/ablqk/adventofcode/doors"
-	"github.com/ablqk/adventofcode/libs/fileread"
-  "github.com/ablqk/adventofcode/libs/match"
+	"github.com/ablqk/adventofcode/pkg/fileread"
+	"github.com/ablqk/adventofcode/pkg/match"
 )
 
 const expectedTotal = 2020
@@ -27,7 +27,7 @@ func (d dec01) Solve() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	l, m, err := match.FindMatch2(lines, expectedTotal)
+	l, m, err := match.FindSum2(lines, expectedTotal)
 	if err != nil {
 		return "", err
 	}

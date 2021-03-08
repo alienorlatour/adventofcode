@@ -47,7 +47,7 @@ func TestCompiler_ParseLine(t *testing.T) {
 		},
 		"invalid value": {
 			line: "FAR",
-			err: "value",
+			err:  "value",
 		},
 	}
 

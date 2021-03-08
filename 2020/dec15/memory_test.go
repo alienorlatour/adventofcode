@@ -13,22 +13,22 @@ func TestMemoryGame_ValueAt(t *testing.T) {
 		expected int
 	}{
 		"nominal 4": {
-			input:    []int{0,3,6},
+			input:    []int{0, 3, 6},
 			end:      4,
 			expected: 0,
 		},
 		"nominal 10": {
-			input:    []int{0,3,6},
+			input:    []int{0, 3, 6},
 			end:      10,
 			expected: 0,
 		},
 		"nominal 9": {
-			input:    []int{0,3,6},
+			input:    []int{0, 3, 6},
 			end:      9,
 			expected: 4,
 		},
 		"nominal 5": {
-			input:    []int{0,3,6},
+			input:    []int{0, 3, 6},
 			end:      5,
 			expected: 3,
 		},

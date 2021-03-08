@@ -31,9 +31,9 @@ func TestRules_AreValid(t *testing.T) {
 func TestRules_Finalise(t *testing.T) {
 	rules := Rules{
 		rules: []Rule{
-			{positions: 0b110, lock: -1, isDeparture: false},  // 1
+			{positions: 0b110, lock: -1, isDeparture: false}, // 1
 			{positions: 0b101, lock: -1, isDeparture: true},  // 2
-			{positions: 0b001, lock: -1, isDeparture: true}, // 0
+			{positions: 0b001, lock: -1, isDeparture: true},  // 0
 		},
 	}
 	order := rules.finalise()

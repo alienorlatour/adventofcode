@@ -33,7 +33,7 @@ func yearValidator(min, max int) func(string) bool {
 // regexpValidator returns an EntryValidator for a given string. The string should match the parameter completely (no trailing characters)
 func regexpValidator(reg string) func(string) bool {
 	return func(s string) bool {
-		r := regexp.MustCompile("^"+reg+"$")
+		r := regexp.MustCompile("^" + reg + "$")
 		return r.Match([]byte(s))
 	}
 }

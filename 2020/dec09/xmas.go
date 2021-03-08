@@ -19,7 +19,7 @@ func (x XMAS) FindFirstInvalid(input []int) int {
 
 func (x XMAS) IsValid(input []int, index int) bool {
 	_, _, err := findMatch2(input[index-x.preamble:index], input[index])
-	return err == nil       // no match found is the error
+	return err == nil // no match found is the error
 }
 
 // findMatch2 is a reuse from December 1st

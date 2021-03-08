@@ -29,14 +29,16 @@ func compress(adapters []int) []int {
 	return compressed
 }
 
+// trib will be used as for memoization on the arrangements method below
+var trib = map[int]int{0: 1, 1: 1, 2: 2}
+
+// arrangements is basically a tribonacci
 func arrangements(ones int) int {
-	// we know from the Internet that groups of ones never go further than 5 elements. There must be a nice mathematical way of solving this, but hey...
-	switch ones {
-	case 0, 1: return 1
-	case 2: return 2
-	case 3: return 4
-	case 4: return 7
-	case 5: return 13
+	a, ok := trib[ones]
+	if ok {
+		return a
 	}
-	return 0
+	a = arrangements(ones-1) + arrangements(ones-2) + arrangements(ones-3)
+	trib[ones] = a
+	return a
 }

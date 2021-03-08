@@ -9,5 +9,5 @@ import (
 
 func TestNewCompany(t *testing.T) {
 	c := NewCompany("7,13,x,x,59,x,31,19")
-	assert.Equal(t, []bus.Bus{7,13,59,31,19}, c.(*busCompany).buses)
+	assert.Equal(t, []bus.Bus{7, 13, 59, 31, 19}, c.(*busCompany).buses)
 }

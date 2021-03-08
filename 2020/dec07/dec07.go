@@ -6,7 +6,7 @@ import (
 	"github.com/ablqk/adventofcode/2020/dec07/defs"
 	"github.com/ablqk/adventofcode/2020/dec07/part2"
 	"github.com/ablqk/adventofcode/doors"
-	"github.com/ablqk/adventofcode/libs/fileread"
+	"github.com/ablqk/adventofcode/pkg/fileread"
 )
 
 // New instance of the Door for December 7

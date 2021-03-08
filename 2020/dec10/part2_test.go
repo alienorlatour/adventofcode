@@ -14,9 +14,10 @@ func TestCompress(t *testing.T) {
 }
 
 func TestArrangements(t *testing.T) {
+	assert.Equal(t, 13, arrangements(5))
+	assert.Equal(t, 4, arrangements(3))
 	assert.Equal(t, 1, arrangements(0))
 	assert.Equal(t, 1, arrangements(1))
 	assert.Equal(t, 2, arrangements(2))
-	assert.Equal(t, 4, arrangements(3))
 	assert.Equal(t, 7, arrangements(4))
 }

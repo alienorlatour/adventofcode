@@ -47,7 +47,7 @@ func TestPassword_IsValidOldStyle(t *testing.T) {
 			expected: true,
 		},
 		"invalid": {
-			input:    password{
+			input: password{
 				min:      1,
 				max:      3,
 				letter:   'b',

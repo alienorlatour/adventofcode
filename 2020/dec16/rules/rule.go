@@ -9,7 +9,7 @@ func NewRule(min1, max1, min2, max2 int, isDeparture bool) (Rule, error) {
 			{min2, max2},
 		},
 		isDeparture: isDeparture,
-		lock: -1,
+		lock:        -1,
 	}, nil
 }
 
@@ -49,7 +49,7 @@ func (ru *Rule) TryLock() (int, bool) {
 	// if there is only one position left
 	if ru.positions&(ru.positions-1) == 0 {
 		for ru.positions > 0 {
-			ru.lock ++
+			ru.lock++
 			ru.positions >>= 1
 		}
 		return ru.lock, true

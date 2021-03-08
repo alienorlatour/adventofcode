@@ -25,7 +25,7 @@ func TestContainedWiseBRT_Count(t *testing.T) {
 				"bright white bags contain 1 shiny gold bag.",
 			},
 			lookFor: "bright white",
-			count: 1,
+			count:   1,
 		},
 		"no other": {
 			lines:   []string{"dotted black bags contain no other bags."},
