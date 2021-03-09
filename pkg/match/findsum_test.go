@@ -78,7 +78,7 @@ func BenchmarkFindSum2_100k(b *testing.B) {
 func randomInts(size int) []int {
 	lines := make([]int, size)
 	for i := 0; i < size; i++ {
-		lines[i] = rand.Int() & 1024 + 2100 // no 2 values will add up to 2020
+		lines[i] = rand.Int() & 1023 + 2100 // no 2 values will add up to 2020
 	}
 	return lines
 }
