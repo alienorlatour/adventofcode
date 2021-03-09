@@ -7,7 +7,7 @@ import (
 )
 
 func TestDec17_Solve(t *testing.T) {
-	s, err := New("testdata/in.txt").Solve()
+	s, err := New("testdata/in.txt", 6).Solve()
 	assert.NoError(t, err)
-	assert.Contains(t, s, "")
+	assert.Contains(t, s, "6 iterations, we have 112 active")
 }

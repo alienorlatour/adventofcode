@@ -81,7 +81,7 @@ func main() {
 	case 16:
 		o = dec16.New("2020/dec16/rules.txt", "2020/dec16/nearby.txt", "79,149,97,163,59,151,101,89,173,139,167,61,73,71,137,53,83,157,131,67")
 	case 17:
-		o = dec17.New("2020/dec17/input.txt")
+		o = dec17.New("2020/dec17/input.txt", 6)
 	case 18:
 		o = dec18.New("2020/dec18/input.txt")
 	case 19:
