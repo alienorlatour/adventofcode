@@ -1,4 +1,4 @@
-package energysource
+package source3d
 
 import (
 	"testing"
@@ -56,8 +56,7 @@ func TestState_Iterate(t *testing.T) {
 			for _, c := range tc.activeCells {
 				s.activate(c)
 			}
-			s = s.Iterate(tc.times)
-			assert.Equal(t, tc.expectedActiveCells, s.CountActiveCells())
+			assert.Equal(t, tc.expectedActiveCells, s.CountActiveCellsAfter(tc.times))
 		})
 	}
 }

@@ -1,4 +1,4 @@
-package energysource
+package source3d
 
 import (
 	"fmt"
@@ -21,10 +21,9 @@ func New() *State {
 }
 
 // Activate sets the given cell to Active
-func (s *State) Activate(x, y, z int) *State {
+func (s *State) Activate(x, y, z int) {
 	c := coord3D{x: x, y: y, z: z}
 	s.activate(c)
-	return s
 }
 
 func (s *State) activate(c coord3D) {
@@ -54,8 +53,12 @@ func (s *State) updateBoundaries(c coord3D) {
 }
 
 // CountActiveCells returns the number of active cells
-func (s *State) CountActiveCells() int {
-	return len(s.active)
+func (s *State) CountActiveCellsAfter(times int) int {
+	n := s
+	for i := 0; i < times; i++ {
+		n = n.iterate()
+	}
+	return len(n.active)
 }
 
 // String returns a representation of the State's cells

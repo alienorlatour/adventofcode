@@ -3,7 +3,7 @@ package dec17
 import (
 	"fmt"
 
-	"github.com/ablqk/adventofcode/2020/dec17/energysource"
+	"github.com/ablqk/adventofcode/2020/dec17/energysource/source4d"
 	"github.com/ablqk/adventofcode/pkg/fileread"
 )
 
@@ -27,19 +27,23 @@ func (d Dec17) Solve() (string, error) {
 		return "", fmt.Errorf("cannot parse input file: %w", err)
 	}
 
-	state = state.Iterate(d.iterations)
-
-	return fmt.Sprintf("Afetr %d iterations, we have %d active cells", d.iterations, state.CountActiveCells()), nil
+	actives := state.CountActiveCellsAfter(d.iterations)
+	return fmt.Sprintf("After %d iterations, we have %d active cells", d.iterations, actives), nil
 }
 
-// newState parses the input file
-func newState(input string) (*energysource.State, error) {
-	state := energysource.New()
+// Source of Experimental Energy
+type source interface {
+	CountActiveCellsAfter(times int) int
+}
+
+// newState parses the input file and returns a source
+func newState(input string) (source, error) {
+	state := source4d.New()
 	var y int
 	err := fileread.ReadAndApply(input, func(s string) error {
 		for x, c := range s {
 			if c == '#' {
-				state.Activate(x, y, 0)
+				state.Activate(x, y, 0, 0)
 			}
 		}
 		y++

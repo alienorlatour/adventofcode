@@ -1,13 +1,4 @@
-package energysource
-
-// Iterate the energy source this many times and return the state
-func (s *State) Iterate(times int) *State {
-	n := s
-	for i := 0; i < times; i++ {
-		n = n.iterate()
-	}
-	return n
-}
+package source3d
 
 // iterate once and return a new State
 func (s *State) iterate() *State {

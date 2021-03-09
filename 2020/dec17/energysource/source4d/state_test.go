@@ -1,4 +1,4 @@
-package energysource
+package source4d
 
 import (
 	"testing"
@@ -8,24 +8,24 @@ import (
 
 func TestState_Activate(t *testing.T) {
 	tt := map[string]struct {
-		activeCells []coord3D
-		min, max    coord3D
+		activeCells []coord4D
+		min, max    coord4D
 	}{
 		"one": {
-			activeCells: []coord3D{{1, 2, 3}},
-			min:         coord3D{0, 0, 0},
-			max:         coord3D{1, 2, 3},
+			activeCells: []coord4D{{1, 2, 3, 0}},
+			min:         coord4D{0, 0, 0, 0},
+			max:         coord4D{1, 2, 3, 0},
 		},
 		"some": {
-			activeCells: []coord3D{
-				{1, 2, 3},
-				{-1, 0, 2},
-				{1, 2, 3},
-				{-1, -2, 3},
-				{1, 2, 3},
+			activeCells: []coord4D{
+				{1, 2, 3, 0},
+				{-1, 0, 2, 0},
+				{1, 2, 3, -2},
+				{-1, -2, 3, 0},
+				{1, 2, 3,5},
 			},
-			min: coord3D{-1, -2, 0},
-			max: coord3D{1, 2, 3},
+			min: coord4D{-1, -2, 0, -2},
+			max: coord4D{1, 2, 3, 5},
 		},
 	}
 
