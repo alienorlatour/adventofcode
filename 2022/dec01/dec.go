@@ -2,6 +2,7 @@ package dec01
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 
 	"github.com/ablqk/adventofcode/doors"
@@ -19,14 +20,13 @@ type dec25 struct {
 
 // Solve the day's problem
 func (d dec25) Solve() (string, error) {
-	var count, max int
+	var count int
+	top := make(topElves, 3)
 
 	err := fileread.ReadAndApply(d.input, func(s string) error {
 		if len(s) == 0 {
 			// nextElf
-			if count > max {
-				max = count
-			}
+			top.saveIfMax(count)
 			count = 0
 		} else {
 			i, err := strconv.Atoi(s)
@@ -38,8 +38,27 @@ func (d dec25) Solve() (string, error) {
 		return nil
 	})
 
+	top.saveIfMax(count)
+
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("%d", max), nil
+	return fmt.Sprintf("%d", top.sum()), nil
+}
+
+type topElves []int
+
+func (te topElves) saveIfMax(i int) {
+	if te[0] < i {
+		te[0] = i
+		sort.Ints(te)
+	}
+}
+
+func (te topElves) sum() int {
+	var s int
+	for _, i := range te {
+		s += i
+	}
+	return s
 }
