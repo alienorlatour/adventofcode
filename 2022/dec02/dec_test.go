@@ -9,7 +9,8 @@ import (
 func TestDec_Solve(t *testing.T) {
 	s, err := New("testdata/in.txt").Solve()
 	assert.NoError(t, err)
-	assert.Contains(t, s, "15")
+	// assert.Contains(t, s, "15")
+	assert.Contains(t, s, "12")
 }
 
 func Test_points(t *testing.T) {
