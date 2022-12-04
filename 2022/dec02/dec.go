@@ -22,7 +22,10 @@ func (d dec25) Solve() (string, error) {
 	var count int
 
 	err := fileread.ReadAndApply(d.input, func(s string) error {
-		opponent, me := split(s)
+		opponent, outcome := split(s)
+
+		me := mygame(opponent, outcome)
+
 		count += score(opponent, me)
 		return nil
 	})
@@ -31,6 +34,16 @@ func (d dec25) Solve() (string, error) {
 		return "", err
 	}
 	return fmt.Sprintf("%d", count), nil
+}
+
+func mygame(opponent RPS, outcome string) RPS {
+	offset := int(outcome[0]) - 'Y'
+	me := opponent + RPS(offset)
+	me %= 3
+	if me == 0 {
+		me = 3
+	}
+	return me
 }
 
 func score(opponent, me RPS) int {
@@ -46,18 +59,18 @@ func points(opponent RPS, me RPS) int {
 	return score
 }
 
-func split(s string) (RPS, RPS) {
+func split(s string) (RPS, string) {
 	spl := strings.Split(s, " ")
-	return toRPS(spl[0]), toRPS(spl[1])
+	return toRPS(spl[0]), spl[1]
 }
 
 func toRPS(s string) RPS {
 	switch s {
-	case "A", "X":
+	case "A":
 		return rock
-	case "B", "Y":
+	case "B":
 		return paper
-	case "C", "Z":
+	case "C":
 		return scissors
 	}
 	return 0
