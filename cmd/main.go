@@ -7,6 +7,8 @@ import (
 
 	"github.com/ablqk/adventofcode/2022/dec01"
 	"github.com/ablqk/adventofcode/2022/dec02"
+	"github.com/ablqk/adventofcode/2022/dec03"
+	"github.com/ablqk/adventofcode/2022/dec04"
 	"github.com/ablqk/adventofcode/doors"
 )
 
@@ -29,10 +31,10 @@ func main() {
 		o = dec01.New("2022/dec01/input.txt")
 	case 2:
 		o = dec02.New("2022/dec02/input.txt")
-	// case 3:
-	// 	o = dec03.New("2022/dec03/input.txt", [][2]int{{1, 1}, {3, 1}, {5, 1}, {7, 1}, {1, 2}})
-	// case 4:
-	// 	o = dec04.New("2022/dec04/input.txt")
+	case 3:
+		o = dec03.New("2022/dec03/input.txt")
+	case 4:
+		o = dec04.New("2022/dec04/input.txt")
 	// case 5:
 	// 	o = dec05.New("2022/dec05/input.txt")
 	// case 6:
